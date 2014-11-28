@@ -15,7 +15,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
 function slt_enqueue_scripts() {
 	wp_register_script( 'soundcloud-sdk', '//connect.soundcloud.com/sdk.js' );
-	wp_register_script( 'slt-main', plugins_url( '/js/slt-main.js', __FILE__ ) , array('soundcloud-sdk'), '1.0' );
+	wp_register_script( 'slt-main', plugins_url( '/js/slt-main.min.js', __FILE__ ) , array('soundcloud-sdk'), '1.0' );
  
 }
 add_action('wp_enqueue_scripts', 'slt_enqueue_scripts');
@@ -28,7 +28,8 @@ function soundcloud_latest_tracks_shortcode($atts) {
 				'tracks' => '3',
 				'height' => '0',
 				'show_comments' => "yes",
-				'hear_more' => 'no'
+				'hear_more' => 'no',
+				'visual' => 'yes'
 			),
 			$atts
 		)
@@ -49,13 +50,14 @@ function soundcloud_latest_tracks_shortcode($atts) {
 		if(empty($aClass))
 			$aClass = 'slt-hear-more';
 		if($hear_more == 'yes')
-			$output .= '<a id="slt-hear-more" class="'.$aClass.'" href="#hear_more">'.$aText.'</a>';
+			$output .= '<div class="slt-hear-more-container"><a id="slt-hear-more" class="'.$aClass.'" href="#hear_more">'.$aText.'</a></div>';
 		$tracks = intval($tracks);		
 		$javaVariables = array( 
 			'userId' => $user,
 			'tracks' => $tracks,
 			'maxheight' => $height,
-			'show_comments' => ($show_comments=="yes" ? 1 : 0) 
+			'show_comments' => ($show_comments=="yes" ? 1 : 0),
+			'visual' => ($visual=="yes" ? 1 : 0)
 		);
 		wp_enqueue_script('soundcloud-sdk');
 		wp_enqueue_script('jquery');
@@ -131,14 +133,16 @@ class slt_plugin extends WP_Widget {
 			$title = esc_attr($instance['title']);
 			$user = esc_attr($instance['user']);
 			$show = esc_textarea($instance['show']);
-			$show_comments = esc_textarea($instance['show_comments']);
-			$hear_more = esc_textarea($instance['hear_more']);
+			$show_comments = esc_attr($instance['show_comments']);
+			$hear_more = esc_attr($instance['hear_more']);
+			$visual = esc_attr($instance['visual']);
 		} else {
 			$title = '';
 			$user = '';
 			$show = '';
 			$show_comments = '';
 			$hear_more = '';
+			$visual = '';
 		}
 		?>
 
@@ -164,6 +168,10 @@ class slt_plugin extends WP_Widget {
 		<input id="<?php echo $this->get_field_id('hear_more'); ?>" name="<?php echo $this->get_field_name('hear_more'); ?>" type="checkbox" value="1" <?php checked( '1', $hear_more ); ?> />
 		<label for="<?php echo $this->get_field_id('hear_more'); ?>"><?php _e('Hear more button', 'wp_widget_plugin'); ?></label>
 		</p>
+		<p>
+		<input id="<?php echo $this->get_field_id('visual'); ?>" name="<?php echo $this->get_field_name('visual'); ?>" type="checkbox" value="1" <?php checked( '1', $visual ); ?> />
+		<label for="<?php echo $this->get_field_id('visual'); ?>"><?php _e('Visual player', 'wp_widget_plugin'); ?></label>
+		</p>
 		<?php
 	}
 
@@ -176,6 +184,7 @@ class slt_plugin extends WP_Widget {
 		$instance['show'] = strip_tags($new_instance['show']);
 		$instance['show_comments'] = strip_tags($new_instance['show_comments']);
 		$instance['hear_more'] = strip_tags($new_instance['hear_more']);
+		$instance['visual'] = strip_tags($new_instance['visual']);
 		return $instance;
 	}
 
@@ -188,6 +197,7 @@ class slt_plugin extends WP_Widget {
 		$show = $instance['show'];
 		$show_comments = $instance['show_comments'];
 		$hear_more = $instance['hear_more'];
+		$visual = $instance['visual'];
 		echo $before_widget;
 
 		// Check if title is set
@@ -200,6 +210,8 @@ class slt_plugin extends WP_Widget {
 			$extraAttribs .= 'show_comments="yes" ';
 		if($hear_more AND $hear_more == '1' )
 			$extraAttribs .= 'hear_more="yes" ';
+		if($visual AND $visual == '1' )
+			$extraAttribs .= 'visual="yes" ';
 
 		echo do_shortcode( sprintf('[soundcloud_latest_tracks user="%s" show="%s" %s]', $user, $show, $extraAttribs) );
 

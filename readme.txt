@@ -7,7 +7,7 @@ Donate link: http://campbell-designs.com/donate
 Tags: soundcloud, music, tracks
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 4.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,16 +29,32 @@ e.g.
 
 1. Upload `soundcloud-latest-tracks` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3.1 Now you can use the shortcode in any piece of text on the site:
+3. Now you can use the shortcode in any piece of text on the site:
 
 	[soundcloud_latest_tracks user="YOUR_SOUNDCLOUD_USER_ID" show="NUMBER_OF_TRACKS_SHOWN" hear_more="YES_OR_NO"]
-3.2 You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in the same attributes as above.
+
+
+Shortcode options:
+- user: The Soundcloud user name that can be found in the URL of the user's Soundcloud account.
+- show: The number of tracks to show of that user (showing the newest to the oldest).
+- hear_more: Show/hide a "hear more" button that will get the next 'show' amount of tracks for the given user.
+- show_comments: Show/hide comments on the SoundCloud player.
+- visual: Use the visual SoundCloud player (artwork is used as a background for the player) or the normal HTML5 player.
+
+
+You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in the same attributes as above.
+
+
 == Upgrade Notice ==
-NA
+= 1.1 =
+* More options for the plugin to customise the SoundCloud player more
 == Screenshots ==
 1. The SoundCloud Latest Tracks shortcode in action:
 == Changelog ==
-No Changes have been made yet.
+= 1.1 =
+* Added a visual option to change the type of SoundCloud player chosen.
+* Shortcode and widget can be used multiple time on the same page now.
+* Fixed bug where hear more button breaks when no more tracks to fetch.
 == Frequently Asked Questions ==
 No one has asked anything yet but leave a ticket and I'll try and get back to you ASAP.
 == Donations ==
