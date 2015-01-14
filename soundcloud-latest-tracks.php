@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Soundcloud_Latest_Tracks
- * @version 1.6
+ * @version 1.2
  */
 /*
 Plugin Name: Soundcloud Latest Tracks
@@ -25,7 +25,7 @@ function soundcloud_latest_tracks_shortcode($atts) {
 		shortcode_atts(
 			array(
 				'user' => '',
-				'tracks' => '3',
+				'show' => '3',
 				'height' => '0',
 				'show_comments' => "yes",
 				'hear_more' => 'no',
@@ -37,8 +37,8 @@ function soundcloud_latest_tracks_shortcode($atts) {
 	if(empty($user)){
 		return 'You must add a user attribute value to the shortcode <br/>e.g. [soundcloud_latest_tracks user="your_soundcloud_ID"]';
 	}
-	else if(!is_numeric($tracks)){
-		return 'The tracks attribute must be a number! <br/>e.g. [soundcloud_latest_tracks user="your_soundcloud_ID" tracks="3"]';
+	else if(!is_numeric(intval($show))){
+		return 'The tracks attribute must be a number! <br/>e.g. [soundcloud_latest_tracks user="your_soundcloud_ID" show="3"]';
 	}
 	else{
 		
@@ -51,7 +51,7 @@ function soundcloud_latest_tracks_shortcode($atts) {
 			$aClass = 'slt-hear-more';
 		if($hear_more == 'yes')
 			$output .= '<div class="slt-hear-more-container"><a id="slt-hear-more" class="'.$aClass.'" href="#hear_more">'.$aText.'</a></div>';
-		$tracks = intval($tracks);		
+		$tracks = intval($show);		
 		$javaVariables = array( 
 			'userId' => $user,
 			'tracks' => $tracks,

@@ -7,7 +7,7 @@ Donate link: http://campbell-designs.com/donate
 Tags: soundcloud, music, tracks
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,11 +46,15 @@ You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in t
 
 
 == Upgrade Notice ==
+= 1.2 =
+* Fixed some bugs to do with the shortcode attributes.
 = 1.1 =
 * More options for the plugin to customise the SoundCloud player more
 == Screenshots ==
 1. The SoundCloud Latest Tracks shortcode in action:
 == Changelog ==
+= 1.2 =
+* Fixed some bugs to do with the shortcode attributes.
 = 1.1 =
 * Added a visual option to change the type of SoundCloud player chosen.
 * Shortcode and widget can be used multiple time on the same page now.
