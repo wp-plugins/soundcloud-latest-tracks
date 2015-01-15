@@ -8,7 +8,7 @@ Plugin Name: Soundcloud Latest Tracks
 Plugin URI: http://wordpress.org/plugins/soundcloud-latest-tracks/
 Description: This plugin simply allows you to choose a Soundcloud user and display an x amount of latest tracks from that user using a nice lil' shortcode.
 Author: Gerald Campbell
-Version: 1.0
+Version: 1.2
 Author URI: http://campbell-designs.com
 */
 defined('ABSPATH') or die("No script kiddies please!");
