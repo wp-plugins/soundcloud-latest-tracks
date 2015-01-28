@@ -100,6 +100,8 @@ function slt_settings_show(){
             submit_button(); 
         ?>            
         </form>
+
+        <p>If you like the plugin then please <a href="https://wordpress.org/support/view/plugin-reviews/soundcloud-latest-tracks">leave me a review!</a></p>
     </div>
     <?php
 }
