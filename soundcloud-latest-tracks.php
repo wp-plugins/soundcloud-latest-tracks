@@ -230,6 +230,8 @@ class slt_plugin extends WP_Widget {
 			$extraAttribs .= 'hear_more="yes" ';
 		if($visual AND $visual == '1' )
 			$extraAttribs .= 'visual="yes" ';
+		else 
+			$extraAttribs .= 'visual="no" ';
 		if($color != '')
 			$extraAttribs .= ('color="'.$color.'" ');
 

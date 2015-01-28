@@ -71,5 +71,8 @@ You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in t
 = Can I use the shortcode AND the widget on the same page? =
 
 For now this is not possible, sorry!
+= The color setting is not doing anything! What's happening? =
+
+The color setting will change the color of the main controls and buttons ONLY if visual is set to off.
 == Donations ==
 Still need to set this up!
