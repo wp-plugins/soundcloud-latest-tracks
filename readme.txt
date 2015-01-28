@@ -7,7 +7,7 @@ Donate link: http://campbell-designs.com/donate
 Tags: soundcloud, music, tracks
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,9 +36,13 @@ e.g.
 
 Shortcode options:
 - user: The Soundcloud user name that can be found in the URL of the user's Soundcloud account.
+
 - show: The number of tracks to show of that user (showing the newest to the oldest).
+
 - hear_more: Show/hide a "hear more" button that will get the next 'show' amount of tracks for the given user.
+
 - show_comments: Show/hide comments on the SoundCloud player.
+
 - visual: Use the visual SoundCloud player (artwork is used as a background for the player) or the normal HTML5 player.
 
 
@@ -46,6 +50,8 @@ You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in t
 
 
 == Upgrade Notice ==
+= 1.3 =
+* Fixed the yes or no attributes to allow uppercase e.g. YES or NO
 = 1.2 =
 * Fixed some bugs to do with the shortcode attributes.
 = 1.1 =
@@ -53,6 +59,8 @@ You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in t
 == Screenshots ==
 1. The SoundCloud Latest Tracks shortcode in action:
 == Changelog ==
+= 1.3 =
+* Added a color attribute to change the main color of the Soundcloud player.
 = 1.2 =
 * Fixed some bugs to do with the shortcode attributes.
 = 1.1 =
@@ -60,6 +68,8 @@ You can also use the widget name "Soundcloud Latest Tracks Widget" and fill in t
 * Shortcode and widget can be used multiple time on the same page now.
 * Fixed bug where hear more button breaks when no more tracks to fetch.
 == Frequently Asked Questions ==
-No one has asked anything yet but leave a ticket and I'll try and get back to you ASAP.
+= Can I use the shortcode AND the widget on the same page? =
+
+For now this is not possible, sorry!
 == Donations ==
 Still need to set this up!

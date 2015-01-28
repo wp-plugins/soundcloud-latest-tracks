@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Soundcloud_Latest_Tracks
- * @version 1.2
+ * @version 1.3
  */
 /*
 Plugin Name: Soundcloud Latest Tracks
 Plugin URI: http://wordpress.org/plugins/soundcloud-latest-tracks/
 Description: This plugin simply allows you to choose a Soundcloud user and display an x amount of latest tracks from that user using a nice lil' shortcode.
 Author: Gerald Campbell
-Version: 1.2
+Version: 1.3
 Author URI: http://campbell-designs.com
 */
 defined('ABSPATH') or die("No script kiddies please!");
@@ -29,7 +29,8 @@ function soundcloud_latest_tracks_shortcode($atts) {
 				'height' => '0',
 				'show_comments' => "yes",
 				'hear_more' => 'no',
-				'visual' => 'yes'
+				'visual' => 'yes',
+				'color' => 'cc4400'
 			),
 			$atts
 		)
@@ -45,19 +46,26 @@ function soundcloud_latest_tracks_shortcode($atts) {
 		$output = '<div id="slt-tracks-container"></div>';
 		$aText = get_option('slt_button_text');
 		$aClass = get_option('slt_button_class');
+		// Make all yes or nos lowercase
+		$hear_more = strtolower($hear_more);
+		$visual = strtolower($visual);
+		$show_comments = strtolower($show_comments);
 		if(empty($aText))
 			$aText = 'Hear more';
 		if(empty($aClass))
 			$aClass = 'slt-hear-more';
 		if($hear_more == 'yes')
 			$output .= '<div class="slt-hear-more-container"><a id="slt-hear-more" class="'.$aClass.'" href="#hear_more">'.$aText.'</a></div>';
-		$tracks = intval($show);		
+		// Make sure tracks and height are ints
+		$tracks = intval($show);
+		$height = intval($height);		
 		$javaVariables = array( 
 			'userId' => $user,
 			'tracks' => $tracks,
 			'maxheight' => $height,
 			'show_comments' => ($show_comments=="yes" ? 1 : 0),
-			'visual' => ($visual=="yes" ? 1 : 0)
+			'visual' => ($visual=="yes" ? 1 : 0),
+			'color' => $color
 		);
 		wp_enqueue_script('soundcloud-sdk');
 		wp_enqueue_script('jquery');
