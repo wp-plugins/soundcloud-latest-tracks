@@ -144,6 +144,7 @@ class slt_plugin extends WP_Widget {
 			$show_comments = esc_attr($instance['show_comments']);
 			$hear_more = esc_attr($instance['hear_more']);
 			$visual = esc_attr($instance['visual']);
+			$color = esc_attr($instance['color']);
 		} else {
 			$title = '';
 			$user = '';
@@ -151,6 +152,7 @@ class slt_plugin extends WP_Widget {
 			$show_comments = '';
 			$hear_more = '';
 			$visual = '';
+			$color = '';
 		}
 		?>
 
@@ -167,6 +169,10 @@ class slt_plugin extends WP_Widget {
 		<p>
 		<label for="<?php echo $this->get_field_id('show'); ?>"><?php _e('No. of tracks to show:', 'wp_widget_plugin'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('show'); ?>" name="<?php echo $this->get_field_name('show'); ?>" type="text" value="<?php echo $show; ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Player color (leave empty for default orange):', 'wp_widget_plugin'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="text" value="<?php echo $color; ?>" />
 		</p>
 		<p>
 		<input id="<?php echo $this->get_field_id('show_comments'); ?>" name="<?php echo $this->get_field_name('show_comments'); ?>" type="checkbox" value="1" <?php checked( '1', $show_comments ); ?> />
@@ -190,6 +196,7 @@ class slt_plugin extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['user'] = strip_tags($new_instance['user']);
 		$instance['show'] = strip_tags($new_instance['show']);
+		$instance['color'] = strip_tags($new_instance['color']);
 		$instance['show_comments'] = strip_tags($new_instance['show_comments']);
 		$instance['hear_more'] = strip_tags($new_instance['hear_more']);
 		$instance['visual'] = strip_tags($new_instance['visual']);
@@ -203,6 +210,7 @@ class slt_plugin extends WP_Widget {
 		$title = apply_filters('widget_title', $instance['title']);
 		$user = $instance['user'];
 		$show = $instance['show'];
+		$color = $instance['color'];
 		$show_comments = $instance['show_comments'];
 		$hear_more = $instance['hear_more'];
 		$visual = $instance['visual'];
@@ -220,6 +228,8 @@ class slt_plugin extends WP_Widget {
 			$extraAttribs .= 'hear_more="yes" ';
 		if($visual AND $visual == '1' )
 			$extraAttribs .= 'visual="yes" ';
+		if($color != '')
+			$extraAttribs .= ('color="'.$color.'" ');
 
 		echo do_shortcode( sprintf('[soundcloud_latest_tracks user="%s" show="%s" %s]', $user, $show, $extraAttribs) );
 
