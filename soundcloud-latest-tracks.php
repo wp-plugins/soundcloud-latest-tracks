@@ -94,7 +94,7 @@ function slt_settings_show(){
             <div>Below you can customise the "Hear more" button text and class.</div><br/>
             <label for="slt_button_text">Text: </label>
             <input type="text" name="slt_button_text" value="<?php echo get_option('slt_button_text'); ?>" /><br/>
-            <label for="slt_button_class">Class (if more than one seperate by a ','): </label>
+            <label for="slt_button_class">Class (if more than one seperate by a space): </label>
             <input type="text" name="slt_button_class" value="<?php echo get_option('slt_button_class'); ?>" /><br/>
             <?php
             submit_button(); 
