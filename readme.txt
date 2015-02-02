@@ -75,4 +75,4 @@ For now this is not possible, sorry!
 
 The color setting will change the color of the main controls and buttons ONLY if visual is set to off.
 == Donations ==
-Still need to set this up!
+Head on over to http://campbell-designs.com/donate to buy me a coffee to keep me energised from fixing all those nasty bugs!
