@@ -11,7 +11,7 @@ Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin simply allows you to choose a Soundcloud user and display an x amount of latest tracks from that user using a nice lil' shortcode.
+This plugin simply allows you to choose a Soundcloud user and display an x amount of latest tracks from that user using a nice lil' shortcode or widget.
 
 == Description ==
 
